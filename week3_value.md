@@ -1,3 +1,5 @@
+Basic vocabulary for Python programming
+
 value
 type
 string
