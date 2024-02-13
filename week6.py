@@ -8,14 +8,16 @@ exit()
 
 class Counter:
     def __init__(self):
-        # setting default value
+        # setting default value -- the only place where we can set the default value
         self.__max_count = 3
         self.__count = 0
         
+    # setter
     def increment(self):
         if self.__count < self.__max_count:
             self.__count += 1
     
+    # another setter
     def decrement(self):
         self.__count -= 1
     
@@ -23,6 +25,7 @@ class Counter:
     def get_count(self):
         return self.__count
 
+    # getter without setter
     def get_max_count(self):
         return self.__max_count
 
