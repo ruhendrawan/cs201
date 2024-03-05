@@ -73,6 +73,8 @@ class ListingView:
 
 
 
+# Application entry point
+# The block of code that starts the application
 if __name__ == '__main__':
     repo = ListingRepository()
     listing_data = repo.load_listing_from_json('listings.json')

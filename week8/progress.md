@@ -1,0 +1,1 @@
+- I use property to encapsulate is_sold attributes, since the data coming from JSON file might not be "true" or "false"
