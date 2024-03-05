@@ -38,5 +38,20 @@
             "username": "seller2",
             "email": ""
         }
+    },
+    {
+        "id": 3,
+        "name": "MacBook Pro 16",
+        "is_sold": "maybe",
+        "price": 1500,
+        "description": "2019 MacBook Pro 16. 512GB. Space Gray. Comes with original box and accessories. Free shipping.",
+        "location": "Los Angeles, CA",
+        "category": "Electronics",
+        "condition": "Used",
+        "seller": {
+            "id": 2,
+            "username": "seller2",
+            "email": ""
+        }
     }
 ]
