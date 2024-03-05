@@ -61,7 +61,7 @@ class Bank():
         return attr_dict
 
     def to_json(self):
-        return json.dumps(self.to_dict())
+        return json.dumps(self.to_dict(), indent=4)
 
 
 john = Customer(1, "John", "Smith")
