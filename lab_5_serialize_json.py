@@ -1,5 +1,4 @@
 # Python file for INFSCI Lab 5
-
 import json
 
 class Customer():
@@ -9,17 +8,19 @@ class Customer():
         self.first_name = first_name
         self.last_name = last_name
 
-    def to_json(self):
-        attr_dictionary = {
+    def to_dict(self):
+        attr_dict = {
             "user_id" : self.user_id,
             "first_name" : self.first_name,
             "last_name" : self.last_name
         }
-        
-        return json.dumps(attr_dictionary)
+        # to return everything in a dictionary
+        # return vars(self))
+        return attr_dict
 
-john = Customer(1, "John", "Smith")
-print(john.to_json())
+    def to_json(self):
+        return json.dumps(self.to_dict())
+
 
 class Account():
 
@@ -27,22 +28,21 @@ class Account():
         self.account_id = account_id
         self.balance = balance
 
-    def to_json(self):
-        attr_dictionary = {
+    def to_dict(self):
+        return {
             "account_id" : self.account_id,
             "balance" : self.balance
         }
         
-        return json.dumps(attr_dictionary)
+    def to_json(self):        
+        return json.dumps(self.to_dict())
     
-first_account = Account(1, 5000)
-print(first_account.to_json())
 
 class Bank():
 
     def __init__(self, customers = [], accounts = []):
-        self.customers = []
-        self.accounts = []
+        self.customers = customers
+        self.accounts = accounts
 
     def add_customer(self, customer):
         self.customers.append(customer)
@@ -50,13 +50,26 @@ class Bank():
     def add_account(self, account):
         self.accounts.append(account)
 
-    def to_json(self):
-        attr_dictionary = {
-            "customers" : [customer.__dict__ for customer in self.customers],
-            "accounts": [account.__dict__ for account in self.accounts]
+    def to_dict(self):
+        customers_list = []
+        for customer in self.customers:
+            customers_list.append(customer.to_dict())
+        attr_dict = {
+            "customers" : customers_list,
+            "accounts": [account.to_dict() for account in self.accounts]
         }
-        
-        return json.dumps(attr_dictionary)
+        return attr_dict
+
+    def to_json(self):
+        return json.dumps(self.to_dict())
+
+
+john = Customer(1, "John", "Smith")
+print(john.to_json())
+
+first_account = Account(1, 5000)
+print(first_account.to_json())
+
 
 the_bank = Bank()
 the_bank.add_customer(john)
