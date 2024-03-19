@@ -72,11 +72,13 @@ class ListingView:
             print(listing)    
 
 
-
-# Application entry point
-# The block of code that starts the application
-if __name__ == '__main__':
+def main():
     repo = ListingRepository()
     listing_data = repo.load_listing_from_json('listings.json')
     view = ListingView(listing_data)
     view.show()
+
+# Application entry point
+# The block of code that starts the application
+if __name__ == '__main__':
+    main()
