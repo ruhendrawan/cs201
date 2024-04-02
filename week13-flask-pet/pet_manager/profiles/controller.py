@@ -1,5 +1,6 @@
-# pet_manager/profiles/controller.py
-from pet_manager.models.pets import Pet
+from flask import render_template
+from .action import create_pet_profile
 
-def create_pet_profile(name, type, breed, age):
-    return Pet(name, type, breed, age)
+def profile_view():
+    pet = create_pet_profile("Buddy", "Dog", "Golden Retriever", 3)
+    return render_template("profile.html", pet=pet)
