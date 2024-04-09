@@ -45,20 +45,21 @@ def profile():
 def healthcare():
     return healthcare_view()
 
+
 @app.route('/adoption')
 def adoption():
     return adoption_view(get_db())
 
 
-@app.route('/treatment/<dogname>')
-def treatment_view(dogname):
+@app.route('/treatment/<petname>')
+def treatment_view(petname):
     # For modularity, we can also move the content of this function 
     # to a separate function in the pet_manager/treatment/controller.py file
     # So that app.py only contains the route definitions
     
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("SELECT name, type, breed, age FROM pets WHERE name = ?", (dogname,))
+    cursor.execute("SELECT name, type, breed, age FROM pets WHERE name = ?", (petname,))
     pet_data = cursor.fetchone()
 
     if not pet_data:
@@ -70,7 +71,7 @@ def treatment_view(dogname):
 
     # We could optimize this query by joining the tables and fetching the data in a single query
     # This is only for demonstration purposes
-    cursor.execute("SELECT date, type, treatment FROM treatments WHERE pet_name = ?", (dogname,))
+    cursor.execute("SELECT date, type, treatment FROM treatments WHERE pet_name = ?", (petname,))
     treatment_rows = cursor.fetchall()
     for date, type, treatment in treatment_rows:
         pet.add_treatment(Treatment(pet, date, type, treatment))
