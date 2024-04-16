@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grocery List</title>
+   </head>
+    <body>
+        <div>
+            <ul>
+            {% for row in poems%}
+                <li>
+                    <h2>{{row.title}} - {{row.author}}</h2>
+                    <p>{{row.poem_text}}</p>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </body>
+</html>
